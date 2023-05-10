@@ -35,17 +35,11 @@ You can publish the config file with:
 php artisan vendor:publish --tag=":package_slug-config"
 ```
 
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag=":package_slug-views"
-```
-
 ## Usage
 
 ```php
 $variable = new HexDigital\Skeleton();
-echo $variable->echoPhrase('Hello, HexDigital!');
+echo $variable->echoPhrase('Hello, Hex Digital!');
 ```
 
 ## Testing
