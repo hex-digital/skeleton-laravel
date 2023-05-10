@@ -1,19 +1,67 @@
 {
-    "name": "hex-digital/skeleton-laravel",
-    "description": "A skeleton for building Hex Digital Laravel packages.",
-    "type": "library",
+    "name": "hex-digital/:package_slug",
+    "description": ":package_description",
     "license": "MIT",
+    "homepage": "https://github.com/hex-digital/:package_slug",
+    "type": "library",
+    "keywords": [
+        "hex-digital",
+        "laravel",
+        ":package_slug"
+    ],
     "authors": [
         {
-            "name": "Ben Sherred",
-            "email": "ben@sherred.co.uk"
+            "name": ":author_name",
+            "email": "author@domain.com"
         }
     ],
-    "require": {},
+    "require": {
+        "php": "^8.2",
+        "illuminate/support": "^10.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.10",
+        "orchestra/testbench": "^8.0",
+        "pestphp/pest": "^2.6",
+        "pestphp/pest-plugin-arch": "^2.1",
+        "phpstan/phpstan": "^1.10",
+        "hex-digital/config-pint": "^1.1",
+        "spatie/laravel-ray": "^1.32"
+    },
     "autoload": {
         "psr-4": {
-            "HexDigital\\SkeletonLaravel\\": "src/"
+            "HexDigital\\Skeleton\\": "src/"
         }
     },
-    "minimum-stability": "dev"
+    "autoload-dev": {
+        "psr-4": {
+            "HexDigital\\Skeleton\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "lint": "./vendor/bin/pint --config vendor/hex-digital/config-pint/pint.json",
+        "test:lint": "./vendor/bin/pint --config vendor/hex-digital/config-pint/pint.json --test",
+        "test:types": "phpstan analyse --ansi",
+        "test:unit": "./vendor/bin/pest --compact --colors=always",
+        "test": [
+            "@test:lint",
+            "@test:types",
+            "@test:unit"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "HexDigital\\Skeleton\\SkeletonServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
