@@ -1,0 +1,27 @@
+name: php security
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+jobs:
+    lint:
+        name: PHP Security
+        runs-on: ubuntu-latest
+        if: "!contains(github.event.head_commit.message, '[ci skip]')"
+
+        strategy:
+            fail-fast: true
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+
+            - name: Run security checks
+              uses: symfonycorp/security-checker-action@v4
