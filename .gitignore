@@ -1,0 +1,17 @@
+# exclude OS files
+.DS_Store
+
+# exclude IDE files
+/.fleet
+/.idea
+/.vscode
+
+# exclude composer files
+/vendor
+
+# exclude local testing files
+.phpunit.cache
+phpunit.xml
+
+# exclude local static analysis files
+phpstan.neon

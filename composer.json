@@ -1,0 +1,19 @@
+{
+    "name": "hex-digital/skeleton-laravel",
+    "description": "A skeleton for building Hex Digital Laravel packages.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ben Sherred",
+            "email": "ben@sherred.co.uk"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "HexDigital\\SkeletonLaravel\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
