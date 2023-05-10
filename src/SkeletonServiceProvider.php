@@ -4,27 +4,15 @@ declare(strict_types=1);
 
 namespace HexDigital\Skeleton;
 
-use Illuminate\Support\ServiceProvider;
+use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-final class SkeletonServiceProvider extends ServiceProvider
+final class SkeletonServiceProvider extends PackageServiceProvider
 {
-    public function register(): void
+    public function configurePackage(Package $package): void
     {
-        $this->mergeConfigFrom(
-            path: __DIR__ . '/../config/skeleton.php',
-            key: 'skeleton',
-        );
-    }
-
-    public function boot(): void
-    {
-        if ($this->app->runningInConsole()) {
-            $this->publishes(
-                paths: [
-                    __DIR__ . '/../config/skeleton.php' => config_path('skeleton.php'),
-                ],
-                groups: 'skeleton-config',
-            );
-        }
+        $package
+            ->name(name: 'skeleton')
+            ->hasConfigFile();
     }
 }
